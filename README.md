@@ -13,7 +13,7 @@ Commands
 * `rootme add slack_pseudo rootme_pseudo`: register a user for the ranking
     - `slack_pseudo`: pseudo of the user on Slack
     - `rootme_pseudo`: pseudo of that same user on root-me.org
-* `rootme remove slack_pseudo`: stop following a user (__NOT IMPLEMENTED YET__)
+* `rootme remove slack_pseudo`: stop following a user
 
 
 Setup
@@ -41,6 +41,12 @@ Technical details
 Uses the gem [slack-ruby-bot](https://github.com/dblock/slack-ruby-bot).
 
 Unfortunately, root-me.org doesn't provide an API, so the data is found with HTML parsing.
+
+
+TODO
+----
+* update scores of users after a delay
+* add unit tests
 
 
 License
