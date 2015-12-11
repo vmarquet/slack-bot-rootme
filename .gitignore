@@ -1,0 +1,10 @@
+# temporary files
+$~
+.DS_Store
+
+# ruby stuff
+vendor/
+.bundle/
+
+# the database
+*.json
