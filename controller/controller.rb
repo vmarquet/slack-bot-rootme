@@ -39,6 +39,15 @@ module RootmeBot
       return message
     end
 
+    def self.remove_user slack_pseudo
+      db = RootmeBot::Database.instance
+
+      user = db.get_user slack_pseudo
+      return "Error: user #{slack_pseudo} not found in bot database." if user == nil
+
+      db.remove_user slack_pseudo
+      return "User #{slack_pseudo} successfully unregistered."
+    end
 
     def self.ranking
       db = RootmeBot::Database.instance

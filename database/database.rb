@@ -49,6 +49,11 @@ module RootmeBot
     end
 
     def remove_user slack_pseudo
+      @users.filter! { |user| user[:slack_pseudo] != slack_pseudo }
+      save
+    end
+
+    def remove_user slack_pseudo
       @users = @users.select { |user| user[:slack_pseudo] != slack_pseudo }
       save
     end

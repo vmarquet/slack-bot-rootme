@@ -57,10 +57,29 @@ module RootmeBot
 
   class Remove < SlackRubyBot::Commands::Base
     command "remove"
-    command "delete"
 
     def self.call(client, data, _match)
-      client.message text: "Not implemented yet :(", channel: data.channel
+      words = data.text.split(" ")
+
+      if words[0] == "remove"
+        slack_pseudos = words[1..(words.size-1)]
+      elsif words[1] == "remove"
+        slack_pseudos = words[2..(words.size-1)]
+      else
+        client.message text: "`remove`: invalid command", channel: data.channel
+        return
+      end
+
+      if slack_pseudos.size == 0
+        msg = "`remove`: missing parameter(s), add at least a slack pseudo"
+        client.message text: msg, channel: data.channel
+        return
+      end
+    
+      for slack_pseudo in slack_pseudos
+        message = RootmeBot::Rootme.remove_user(slack_pseudo)
+        client.message text: message, channel: data.channel
+      end
     end
   end
 
