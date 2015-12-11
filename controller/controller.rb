@@ -59,13 +59,33 @@ module RootmeBot
       users.sort! { |a,b| a[:score] <=> b[:score] }
       users.reverse!
 
-      # we create the message
+      # we create the message and return it
+      # first, for each user, starting from best ranked,
+      # we dislay a line with score, rank, etc...
       message = "Ranking:\n"
       users.each_with_index do |user, index|
         message += "#{index+1}. #{user[:slack_pseudo]} (aka #{user[:rootme_pseudo]})"
         message += " — #{user[:score]} points — place #{user[:place]} — completed #{user[:ratio]}"
         message += "\n"
       end
+
+      # last, we add a summary line like "In the team, there is 2 hackers, 3 lamers, 1 newbie."
+      ranks = HashWithIndifferentAccess.new({ elite: 0, hacker: 0, programmer: 0, lamer: 0, newbie: 0 })
+      users.each do |user|
+        ranks[user[:rank]] += 1
+      end
+
+      message += "In the team, there is "
+      comma = false
+      ranks.each do |rank, number|
+        if number > 0
+          message += ", " if comma
+          message += "#{number} #{rank}"
+          message += "s" if number > 1
+          comma = true if !comma
+        end
+      end
+      message += "."
 
       return message
     end
