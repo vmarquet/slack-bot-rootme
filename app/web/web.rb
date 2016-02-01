@@ -1,3 +1,7 @@
+require "net/http"
+require "nokogiri"
+require "time"
+
 module RootmeBot
   module Web
     def self.url username, lang="en"

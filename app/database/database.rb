@@ -1,3 +1,5 @@
+require "singleton"
+
 module RootmeBot
   class Database
     include Singleton

@@ -28,7 +28,7 @@ Setup
 
 1. clone this repository on your server
 2. run `bundle install` to install dependencies
-3. run the bot: `SLACK_API_TOKEN=[YOUR TOKEN HERE] bundle exec ruby rootmebot.rb`
+3. run the bot: `SLACK_API_TOKEN=[YOUR TOKEN HERE] bundle exec ruby app/rootmebot.rb`
 
 ### In your Slack client
 
@@ -47,6 +47,7 @@ TODO
 ----
 * update scores of users after a delay
 * add unit tests
+* a command to display the last challenges validations of a user (for example all the validations made during the last 7 days)
 
 
 License

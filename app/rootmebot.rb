@@ -1,18 +1,8 @@
-#!/usr/bin/env ruby
-
 require "slack-ruby-bot"
 
-require "net/http"
-require "nokogiri"
-require "time"
-require "./web/web"
-require "./web/rootme_parsing_error"
-require "./web/rootme_request_error"
-
-require "singleton"
-require "./database/database"
-
-require "./controller/controller"
+require "./app/controller/all"
+require "./app/database/all"
+require "./app/web/all"
 
 
 module RootmeBot
